@@ -1,33 +1,45 @@
 <!doctype html>
 <html lang="af">
+
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>Titanic — Baba Fourie Finale</title>
 
+<meta name="robots" content="noindex,nofollow,noarchive">
+
 <style>
-*{box-sizing:border-box}
+
+*{
+    box-sizing:border-box;
+}
 
 body{
     margin:0;
     min-height:100vh;
     display:grid;
     place-items:center;
-    overflow:hidden;
+    overflow-x:hidden;
     background:
         radial-gradient(circle at 50% 0%,#17385b,#07192d 45%,#020914);
     font-family:Georgia,'Times New Roman',serif;
     color:#fff;
 }
 
+/* Stars */
+
 .stars{
     position:fixed;
     inset:0;
-    background-image:radial-gradient(#fff9 1px,transparent 1px);
+    background-image:
+        radial-gradient(#fff9 1px,transparent 1px);
     background-size:40px 40px;
     opacity:.22;
+    pointer-events:none;
 }
+
+/* Ocean */
 
 .ocean{
     position:fixed;
@@ -42,7 +54,10 @@ body{
             #071b31 9px 18px
         );
     opacity:.65;
+    pointer-events:none;
 }
+
+/* Main Titanic card */
 
 .card{
     width:min(92vw,680px);
@@ -50,9 +65,17 @@ body{
     text-align:center;
     position:relative;
     z-index:2;
-    background:linear-gradient(145deg,#102942f5,#061322f7);
+
+    background:
+        linear-gradient(
+            145deg,
+            #102942f5,
+            #061322f7
+        );
+
     border:3px double #d8b55b;
     border-radius:6px;
+
     box-shadow:
         0 25px 80px #000c,
         0 0 45px #c9a84d33;
@@ -94,6 +117,8 @@ p{
     margin:8px auto;
 }
 
+/* Password form */
+
 .form{
     display:flex;
     gap:10px;
@@ -107,8 +132,10 @@ input{
     padding:15px 16px;
     font-size:17px;
     letter-spacing:.08em;
+
     border:2px solid #d8b55b;
     border-radius:6px;
+
     background:#f6f0df;
     color:#07192d;
 }
@@ -117,198 +144,303 @@ button{
     padding:0 22px;
     border:0;
     border-radius:6px;
+
     background:#d8b55b;
     color:#07192d;
+
     font-weight:800;
     text-transform:uppercase;
     cursor:pointer;
 }
 
+button:hover{
+    background:#efd37f;
+}
+
 .msg{
     min-height:24px;
     margin-top:14px;
+
     color:#ffb9c9;
+
     font-family:Arial,sans-serif;
     font-size:14px;
 }
 
-.hidden{display:none}
+/* Hide reveal until password is correct */
+
+.hidden{
+    display:none !important;
+}
+
+/* Reveal animation */
 
 #reveal{
-    animation:rise 1.1s ease both;
+    animation:reveal 1.2s ease both;
 }
 
-.icons{
-    font-size:42px;
-    margin:12px;
+/* Your Anja reveal card */
+
+.reveal-image{
+    display:block;
+    width:100%;
+    max-width:650px;
+    height:auto;
+    margin:0 auto;
+
+    border-radius:8px;
+
+    box-shadow:
+        0 15px 45px #0009,
+        0 0 30px #d8b55b33;
 }
 
-.big{
-    font-size:clamp(42px,9vw,76px);
-    color:#e2c36d;
-    text-shadow:0 0 24px #d8b55b55;
-    margin:12px 0;
-}
-
-.girl{
-    font-size:clamp(36px,8vw,67px);
-    color:#ffd1e5;
-    text-shadow:0 0 24px #ff79b788;
-}
-
-.small{
-    color:#e2c36d;
-    font-style:italic;
-    margin-top:22px;
-}
+/* Pink/gold confetti */
 
 .confetti{
     position:fixed;
-    top:-20px;
+    top:-30px;
+
     width:10px;
     height:16px;
+
     background:#ffd0e4;
+
     animation:fall linear forwards;
+
     z-index:10;
+    pointer-events:none;
+}
+
+.confetti:nth-child(even){
+    background:#d8b55b;
 }
 
 @keyframes fall{
+
     to{
-        transform:translateY(110vh) rotate(1000deg);
+        transform:
+            translateY(110vh)
+            rotate(1000deg);
     }
+
 }
 
-@keyframes rise{
+@keyframes reveal{
+
     from{
         opacity:0;
-        transform:translateY(35px) scale(.92);
+        transform:
+            translateY(30px)
+            scale(.94);
     }
+
     to{
         opacity:1;
-        transform:translateY(0) scale(1);
+        transform:
+            translateY(0)
+            scale(1);
     }
+
 }
 
+/* Mobile */
+
 @media(max-width:560px){
-    .card{padding:35px 20px}
-    .form{flex-direction:column}
-    button{padding:15px}
+
+    .card{
+        padding:35px 20px;
+    }
+
+    .form{
+        flex-direction:column;
+    }
+
+    button{
+        padding:15px;
+    }
+
 }
+
 </style>
 </head>
+
 
 <body>
 
 <div class="stars"></div>
 <div class="ocean"></div>
 
+
+<!-- LOCKED TITANIC SCREEN -->
+
 <main class="card" id="lock">
 
-    <div class="kicker">Die Laaste Reis • Finale</div>
+    <div class="kicker">
+        Die Laaste Reis • Finale
+    </div>
+
     <div class="line"></div>
 
-    <h1>Die finale kluis is gesluit…</h1>
+    <h1>
+        Die finale kluis is gesluit…
+    </h1>
 
     <p>
-        Julle het die leidrade gevolg, die geheime van die Titanic
-        ontrafel en die einde van die reis bereik.
+        Julle het die leidrade gevolg,
+        die geheime van die Titanic ontrafel
+        en die einde van die reis bereik.
     </p>
 
     <p>
-        <strong>Voer julle finale Titanic-kode in:</strong>
+        <strong>
+            Voer julle finale Titanic-kode in:
+        </strong>
     </p>
 
     <div class="form">
+
         <input
             id="code"
+            type="password"
             inputmode="numeric"
             autocomplete="off"
             placeholder="Geheime kode"
         >
-        <button id="unlock">Ontsluit</button>
+
+        <button id="unlock">
+            Ontsluit
+        </button>
+
     </div>
 
-    <div class="msg" id="msg"></div>
+    <div
+        class="msg"
+        id="msg">
+    </div>
 
 </main>
 
 
-<main class="card hidden" id="reveal">
+<!-- REVEAL SCREEN -->
 
-    <div class="kicker">Die geheim is ontsluit…</div>
-    <div class="line"></div>
+<main
+    class="card hidden"
+    id="reveal">
 
-    <h1>JULLE HET DIE EINDBESTEMMING BEREIK!</h1>
-
-    <p>
-        Die kode is korrek. Ná al die leidrade wag Baba Fourie
-        se grootste geheim…
-    </p>
-
-    <div class="icons">⚓ 🚢 🎀</div>
-
-    <div class="big">BABA FOURIE</div>
-
-    <div class="girl">
-        IS ’N DOGTERTJIE!
+    <div class="kicker">
+        Die geheim is ontsluit…
     </div>
 
-    <p class="small">
-        Ons klein wonderwerkie kom April 2027.
-    </p>
+    <div class="line"></div>
+
+    <img
+        src="1000368526.png"
+        alt="Baba Fourie"
+        class="reveal-image"
+    >
 
 </main>
 
 
 <script>
 
-const valid='375284964';
+/* TITANIC CODE */
 
-const code=document.getElementById('code');
-const msg=document.getElementById('msg');
+const valid = '375284964';
 
-function go(){
+const code =
+    document.getElementById('code');
 
-    if(code.value.trim()===valid){
+const msg =
+    document.getElementById('msg');
+
+
+function unlockReveal(){
+
+    if(code.value.trim() === valid){
+
+        /* Hide password screen */
 
         document
             .getElementById('lock')
-            .classList.add('hidden');
+            .classList
+            .add('hidden');
+
+
+        /* Show your Anja card */
 
         document
             .getElementById('reveal')
-            .classList.remove('hidden');
+            .classList
+            .remove('hidden');
 
-        for(let i=0;i<90;i++){
 
-            let x=document.createElement('i');
+        /* Confetti */
 
-            x.className='confetti';
-            x.style.left=Math.random()*100+'vw';
-            x.style.animationDuration=(2.5+Math.random()*3)+'s';
-            x.style.animationDelay=Math.random()*1.1+'s';
+        for(let i = 0; i < 90; i++){
 
-            document.body.appendChild(x);
+            const confetti =
+                document.createElement('i');
 
-            setTimeout(()=>x.remove(),6500);
+            confetti.className =
+                'confetti';
+
+            confetti.style.left =
+                Math.random() * 100 + 'vw';
+
+            confetti.style.animationDuration =
+                (2.5 + Math.random() * 3) + 's';
+
+            confetti.style.animationDelay =
+                Math.random() * 1.1 + 's';
+
+            document.body
+                .appendChild(confetti);
+
+            setTimeout(
+                () => confetti.remove(),
+                6500
+            );
+
         }
 
-    }else{
+    }
 
-        msg.textContent=
+    else{
+
+        msg.textContent =
             'Die kode is nie korrek nie… probeer weer!';
 
         code.select();
+
     }
+
 }
+
+
+/* Unlock button */
 
 document
     .getElementById('unlock')
-    .onclick=go;
+    .addEventListener(
+        'click',
+        unlockReveal
+    );
 
-code.addEventListener('keydown',e=>{
-    if(e.key==='Enter')go();
-});
+
+/* Enter key */
+
+code.addEventListener(
+    'keydown',
+    function(event){
+
+        if(event.key === 'Enter'){
+            unlockReveal();
+        }
+
+    }
+);
 
 </script>
 
